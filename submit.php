@@ -35,42 +35,8 @@
         $title = $_POST['title'];
         $desc = $_POST['description'];
 	$file = $_POST['file'];
-/**
-		
-		$file = $_FILES['file']['name'];
-		$tmp_dir = $_FILES['file']['tmp_name'];
-		$size = $_FILES['file']['size'];
-		
-		
-			$upload_dir = 'uploads/'; // upload directory
-	
-			$ext = strtolower(pathinfo($file,PATHINFO_EXTENSION)); // get image extension
-		
-			// valid image extensions
-			$valid_extensions = array('pdf', 'doc', 'docx'); // valid extensions
-		
-			// rename uploading image
-			$userfile = rand(1000,1000000).".".$ext;
-				
-			// allow valid image file formats
-			if(in_array($ext, $valid_extensions)){			
-				// Check file size '5MB'
-				if($imgSize < 2500000)				{
-					move_uploaded_file($tmp_dir,$upload_dir.$userfile);
-				}
-				else{
-					$errMSG = "Sorry, your file is too large.";
-				}
-			}
-			else{
-				$errMSG = "Sorry, only pdf, doc & docx files are allowed.";		
-			}
-		
-		
-		**/
-		// if no error occured, continue ....
 
-			$stmt = $DB_con->prepare('INSERT INTO reg(team,name1,name2,name3,name4,name5,mob1,mob2,mob3,mob4,mob5,email1,email2,email3,email4,email5,roll1,roll2,roll3,roll4,roll5,title,description,file) VALUES(:team,:name1,:name2,:name3,:name4,:name5,:mob1,:mob2,:mob3,:mob4,:mob5,:email1,:email2,:email3,:email4,:email5,:roll1,:roll2,:roll3,:roll4,:roll5,:title,:description,:file)');
+	$stmt = $DB_con->prepare('INSERT INTO reg(team,name1,name2,name3,name4,name5,mob1,mob2,mob3,mob4,mob5,email1,email2,email3,email4,email5,roll1,roll2,roll3,roll4,roll5,title,description,file) VALUES(:team,:name1,:name2,:name3,:name4,:name5,:mob1,:mob2,:mob3,:mob4,:mob5,:email1,:email2,:email3,:email4,:email5,:roll1,:roll2,:roll3,:roll4,:roll5,:title,:description,:file)');
             $stmt->bindParam(':team',$team);
             $stmt->bindParam(':name1',$name1);
             $stmt->bindParam(':name2',$name2);
@@ -95,5 +61,59 @@
             $stmt->bindParam(':title',$title);
             $stmt->bindParam(':description',$desc);
             $stmt->bindParam(':file',$file);
-	}
+        
+
+            error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+require_once "phpmailer/class.phpmailer.php";
+
+$message = '<html><body>';
+$message .= '';
+$message .= '<h1>Thank you for your submission on Anand Memorial Project Competition</h1>';
+$message .= '<br><h3>Registered members : </h3>';
+$message .= $name1;
+$message .= '<br>';
+$message .= $name2;
+$message .= '<br>';
+$message .= $name3;
+if(isset($_POST['name4'])){
+$message .= '<br>';
+$message .= $name4;
+}
+if(isset($_POST['name5'])){
+$message .= '<br>';
+$message .= $name5;
+}
+$message .= "</body></html>";
+$message .='<br><p>We\'ll be reviewing your abstract and keep checking the website for further updates. </p>';
+$mail = new PHPMailer(true);
+$mail->IsSMTP();
+$mail->SMTPDebug = 0;
+$mail->SMTPAuth = true;
+$mail->SMTPSecure = 'ssl';
+$mail->Host = 'mail.tathva.org';
+$mail->Port = 465;
+$mail->Username = 'ampc@tathva.org';
+$mail->Password = 'QkIr^?Ybb&zn';
+$mail->Subject = ' Anand Memorial Program Competition ';
+$mail->SetFrom('ampc@tathva.org', 'Team AMPC');
+
+$mail->AddAddress($email1);
+$mail->AddAddress($email2);
+$mail->AddAddress($email3);
+$mail->AddAddress($email4);
+$mail->AddAddress($email5);
+
+$mail->MsgHTML($message);
+
+if( $stmt->execute() ):
+        $message = 'Successfully Registered';
+        else:
+        $message = 'Sorry there must have been an issue registering';
+        endif;
+
+        }
+?>
+<?php
+header("Location: register.php?message=$message", true, 301);
+echo $message
 ?>
