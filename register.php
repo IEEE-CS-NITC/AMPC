@@ -19,7 +19,7 @@
         ?>
             <h2 class="center">Register</h2>
             <div class="row">
-                <form>
+                <form method="POST" action="submit.php">
                     <div class="row">
                         <h3 class="">Team Name</h3>
                         <input type="text" placeholder="Team Name" name="team" required>
@@ -109,7 +109,7 @@
                         <h3>Abstract Drive Link</h3>
                         <input type="text" placeholder="Drive Link" name="file">
                     </div>
-                    <input type="submit" value="Submit">
+                    <input type="submit" name="submit" value="Submit">
                 </form>
             </div>
         </div>

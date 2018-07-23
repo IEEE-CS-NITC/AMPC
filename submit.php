@@ -1,6 +1,4 @@
 <?php
-
-	error_reporting( ~E_NOTICE ); // avoid notice
 	
 	require_once 'config.php';
 	
@@ -10,27 +8,27 @@
         $name1 = $_POST['name1'];
         $mob1 = $_POST['mob1'];
         $email1 = $_POST['email1'];
-        $roll1 = $_POST['roll1']
+        $roll1 = $_POST['roll1'];
 
         $name2 = $_POST['name2'];
         $mob2 = $_POST['mob2'];
         $email2 = $_POST['email2'];
-        $roll2 = $_POST['roll2']
+        $roll2 = $_POST['roll2'];
 
         $name3 = $_POST['name3'];
         $mob3 = $_POST['mob3'];
         $email3 = $_POST['email3'];
-        $roll3 = $_POST['roll3']
+        $roll3 = $_POST['roll3'];
 
         $name4 = $_POST['name4'];
         $mob4 = $_POST['mob4'];
         $email4 = $_POST['email4'];
-        $roll4 = $_POST['roll4']
+        $roll4 = $_POST['roll4'];
 
         $name5 = $_POST['name5'];
         $mob5 = $_POST['mob5'];
         $email5 = $_POST['email5'];
-        $roll5 = $_POST['roll5']
+        $roll5 = $_POST['roll5'];
 
         $title = $_POST['title'];
         $desc = $_POST['description'];
@@ -61,7 +59,13 @@
             $stmt->bindParam(':title',$title);
             $stmt->bindParam(':description',$desc);
             $stmt->bindParam(':file',$file);
+            if( $stmt->execute() ):
+                $msg = 'Successfully Registered';
+                else:
+                $msg = 'Sorry there must have been an issue registering';
+                endif;
         
+                }
 
             error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
 require_once "phpmailer/class.phpmailer.php";
@@ -98,22 +102,12 @@ $mail->Subject = ' Anand Memorial Program Competition ';
 $mail->SetFrom('ampc@tathva.org', 'Team AMPC');
 
 $mail->AddAddress($email1);
-$mail->AddAddress($email2);
-$mail->AddAddress($email3);
-$mail->AddAddress($email4);
-$mail->AddAddress($email5);
-
 $mail->MsgHTML($message);
+$mail->Send();
 
-if( $stmt->execute() ):
-        $message = 'Successfully Registered';
-        else:
-        $message = 'Sorry there must have been an issue registering';
-        endif;
 
-        }
 ?>
 <?php
-header("Location: register.php?message=$message", true, 301);
+header("Location: register.php?message=$msg", true, 301);
 echo $message
 ?>

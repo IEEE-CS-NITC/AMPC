@@ -40,7 +40,7 @@ $mail->Host = 'mail.tathva.org';
 $mail->Port = 465;
 
 // your gmail address
-$mail->Username = 'submissions@tathva.org';
+$mail->Username = 'ampc@tathva.org';
 
 // your password must be enclosed in single quotes
 $mail->Password = 'QkIr^?Ybb&zn';
@@ -49,7 +49,7 @@ $mail->Password = 'QkIr^?Ybb&zn';
 $mail->Subject = ' Sample email - www.thesoftwareguy.in ';
 
 // Sender email address and name
-$mail->SetFrom('submissions@tathva.org', 'Vishnu Poothery');
+$mail->SetFrom('ampc@tathva.org', 'Vishnu Poothery');
 
 // reciever address, person you want to send
 $mail->AddAddress('vishnupoothery@gmail.com');
