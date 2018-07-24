@@ -103,30 +103,6 @@ img {
 	margin: 0;
 }
 
-/* Mobile Devices */
-
-@media screen and (max-width: 50em) {
-	.one.col,
-	.two.col,
-	.three.col,
-	.four.col,
-	.five.col,
-	.six.col,
-	.seven.col,
-	.eight.col,
-	.nine.col,
-	.ten.col,
-	.eleven.col {
-		float: none;
-		width: 100%;
-	}
-	.hide-on-mobile {
-		display: none !important;
-		width: 0;
-		height: 0;
-	}
-}
-
 .container:after,
 .row:after {
 	content: "";
@@ -206,7 +182,7 @@ p {
 }
 
 button {
-	color: #25A197;
+	color: #ffffff;
 	height: 50px;
 	line-height: 48px;
 	font-size: 1em;
@@ -315,29 +291,6 @@ header .mobileToggle span {
 	margin-top: -5px;
 }
 
-@media screen and (max-width: 50em) {
-	header nav {
-		width: 100%;
-	}
-	header nav ul {
-		padding-top: 0px;
-		margin-bottom: 22px;
-		text-align: center;
-		width: 100%;
-	}
-	header nav ul li {
-		width: 100%;
-		padding: 7px 0;
-		margin: 0;
-	}
-	header nav ul li:first-child {
-		margin-top: 70px;
-	}
-	header .mobileToggle {
-		display: block;
-	}
-}
-
 /* Hero One */
 
 #hero {
@@ -398,20 +351,6 @@ header .mobileToggle span {
 	font-weight: 700;
 }
 
-@media screen and (max-width: 50em) {
-	#hero button {
-		margin-bottom: 20px;
-	}
-	#hero h2 {
-		font-size: 2.2em;
-	}
-	#hero p {
-		font-size: 0.8em;
-		line-height: 21px;
-		width: 100%;
-	}
-}
-
 /* About Section */
 
 #about {
@@ -440,6 +379,11 @@ header .mobileToggle span {
 
 .tip_1 {
 	border-right: 1px black solid;
+}
+
+.pro_link {
+	color: black;
+	text-decoration: none;
 }
 
 #work .work {
@@ -494,17 +438,27 @@ header .mobileToggle span {
 	display: block;
 }
 
-@media screen and (max-width: 50em) {
-	.tip_1 {
-		border: none;
-	}
-	}
-
 /* Services Section */
 
 #services {
 	background: #F4F4F4;
 	padding: 120px 0;
+}
+
+#services .button {
+	border: 0;
+	color: #fff !important;
+	height: 50px;
+	line-height: 48px;
+	font-size: 0.9rem;
+	padding: 0 40px;
+	background: #FF4136;
+	display: inline-block;
+	margin: 0 auto;
+	font-family: 'Roboto', sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	font-weight: 700;
 }
 
 .progressBar {
@@ -634,12 +588,6 @@ header .mobileToggle span {
 	padding: 0 40px;
 	background: #001F3F;
 	margin-top: 10px;
-}
-
-@media screen and (max-width: 50em) {
-	#pricing .card {
-		margin: 40px 0;
-	}
 }
 
 /*Contact Section */
@@ -782,12 +730,6 @@ footer hr {
 	margin: 20px 0 20px 0;
 }
 
-@media screen and (max-width: 50em) {
-	footer ul li {
-		display: block;
-	}
-}
-
 /* Misc */
 
 .center {
@@ -800,4 +742,68 @@ footer hr {
 
 .padUp {
 	padding-top: 50px;
+}
+
+/* Mobile Devices */
+
+@media screen and (max-width: 50em) {
+	.one.col,
+	.two.col,
+	.three.col,
+	.four.col,
+	.five.col,
+	.six.col,
+	.seven.col,
+	.eight.col,
+	.nine.col,
+	.ten.col,
+	.eleven.col {
+		float: none;
+		width: 100%;
+	}
+	.hide-on-mobile {
+		display: none !important;
+		width: 0;
+		height: 0;
+	}
+	header nav {
+		width: 100%;
+	}
+	header nav ul {
+		padding-top: 0px;
+		margin-bottom: 22px;
+		text-align: center;
+		width: 100%;
+	}
+	header nav ul li {
+		width: 100%;
+		padding: 7px 0;
+		margin: 0;
+	}
+	header nav ul li:first-child {
+		margin-top: 70px;
+	}
+	header .mobileToggle {
+		display: block;
+	}
+	#hero button {
+		margin-bottom: 20px;
+	}
+	#hero h2 {
+		font-size: 2.2em;
+	}
+	#hero p {
+		font-size: 0.8em;
+		line-height: 21px;
+		width: 100%;
+	}
+	.tip_1 {
+		border: none;
+	}
+	#pricing .card {
+		margin: 40px 0;
+	}
+	footer ul li {
+		display: block;
+	}
 }

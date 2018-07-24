@@ -28,7 +28,7 @@
                     <div class="row">
                         <div class="row">
                             <div class="three col">
-                                <input type="text" placeholder="Name" name="name1" required>
+                                <input type="text" placeholder="Name (captain)" name="name1" required>
                             </div>
                             <div class="three col">
                                 <input type="text" placeholder="Roll No" name="roll1" required>
